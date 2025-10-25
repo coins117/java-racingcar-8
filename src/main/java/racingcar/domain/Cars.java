@@ -1,13 +1,26 @@
 package racingcar.domain;
 
 import java.util.List;
+import racingcar.exception.ErrorCode;
 
 public class Cars {
 
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
+        validateDuplicateNames(cars);
         this.cars = List.copyOf(cars);
+    }
+
+    private void validateDuplicateNames(List<Car> cars) {
+        long uniqueNameCount = cars.stream()
+                .map(Car::getName)
+                .distinct()
+                .count();
+
+        if (uniqueNameCount != cars.size()) {
+            throw new IllegalArgumentException(ErrorCode.DUPLICATE_CAR_NAME.getMessage());
+        }
     }
 
     public void playRound() {

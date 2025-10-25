@@ -8,7 +8,8 @@ public enum ErrorCode {
     INVALID_ATTEMPT_COUNT_FORMAT("시도 횟수는 숫자여야 합니다."),
     INVALID_ATTEMPT_COUNT_RANGE("시도 횟수는 양수여야 합니다."),
     BLANK_CAR_NAME("자동차 이름은 비어있을 수 없습니다."),
-    INVALID_CAR_NAME_LENGTH("자동차 이름은 %d자 이하여야 합니다.".formatted(Car.MAX_NAME_LENGTH));
+    INVALID_CAR_NAME_LENGTH("자동차 이름은 %d자 이하여야 합니다.".formatted(Car.MAX_NAME_LENGTH)),
+    DUPLICATE_CAR_NAME("중복된 자동차 이름이 있습니다.");
 
     private final String message;
 

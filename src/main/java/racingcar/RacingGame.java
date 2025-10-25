@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.domain.engine.RandomMoveStrategy;
+import racingcar.domain.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

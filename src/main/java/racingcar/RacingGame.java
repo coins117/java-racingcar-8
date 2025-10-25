@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.domain.engine.RandomEngine;
+import racingcar.domain.engine.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -29,7 +29,7 @@ public class RacingGame {
 
     private Cars createCars(List<String> carNames) {
         List<Car> cars = carNames.stream()
-                .map(name -> new Car(name, new RandomEngine()))
+                .map(name -> new Car(name, new RandomMoveStrategy()))
                 .toList();
         return new Cars(cars);
     }

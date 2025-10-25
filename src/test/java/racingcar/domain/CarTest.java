@@ -17,9 +17,9 @@ class CarTest {
     @ValueSource(strings = {"", " ", "\t", "\n"})
     @DisplayName("이름이 비어있으면 예외가 발생한다")
     void blankCarName(String name) {
-        Engine engine = () -> true;
+        MoveStrategy moveStrategy = () -> true;
 
-        assertThatThrownBy(() -> new Car(name, engine))
+        assertThatThrownBy(() -> new Car(name, moveStrategy))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorCode.BLANK_CAR_NAME.getMessage());
     }
@@ -27,10 +27,10 @@ class CarTest {
     @Test
     @DisplayName("이름이 일정 길이를 초과하면 예외가 발생한다")
     void invalidCarNameMaxLength() {
-        Engine engine = () -> true;
+        MoveStrategy moveStrategy = () -> true;
         String longName = "a".repeat(Car.MAX_NAME_LENGTH + 1);
 
-        assertThatThrownBy(() -> new Car(longName, engine))
+        assertThatThrownBy(() -> new Car(longName, moveStrategy))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorCode.INVALID_CAR_NAME_LENGTH.getMessage());
     }
@@ -38,8 +38,8 @@ class CarTest {
     @Test
     @DisplayName("전진 조건이 만족되면 자동차가 전진한다")
     void moveForward() {
-        Engine engine = () -> true;
-        Car car = new Car("pobi", engine);
+        MoveStrategy moveStrategy = () -> true;
+        Car car = new Car("pobi", moveStrategy);
 
         car.move();
 
@@ -49,8 +49,8 @@ class CarTest {
     @Test
     @DisplayName("전진 조건이 만족되지 않으면 자동차가 정지한다")
     void stop() {
-        Engine engine = () -> false;
-        Car car = new Car("pobi", engine);
+        MoveStrategy moveStrategy = () -> false;
+        Car car = new Car("pobi", moveStrategy);
 
         car.move();
 

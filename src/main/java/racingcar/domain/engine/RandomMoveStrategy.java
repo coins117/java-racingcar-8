@@ -1,9 +1,9 @@
 package racingcar.domain.engine;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.domain.Engine;
+import racingcar.domain.MoveStrategy;
 
-public class RandomEngine implements Engine {
+public class RandomMoveStrategy implements MoveStrategy {
 
     private static final int MIN_RANDOM_VALUE = 0;
     private static final int MAX_RANDOM_VALUE = 9;

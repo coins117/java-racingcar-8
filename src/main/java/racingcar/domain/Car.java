@@ -8,13 +8,13 @@ public class Car {
     private static final int INITIAL_POSITION = 0;
 
     private final String name;
-    private final Engine engine;
+    private final MoveStrategy moveStrategy;
     private int position;
 
-    public Car(String name, Engine engine) {
+    public Car(String name, MoveStrategy moveStrategy) {
         validateName(name);
         this.name = name;
-        this.engine = engine;
+        this.moveStrategy = moveStrategy;
         this.position = INITIAL_POSITION;
     }
 
@@ -36,7 +36,7 @@ public class Car {
     }
 
     public void move() {
-        if (engine.canMove()) {
+        if (moveStrategy.canMove()) {
             position++;
         }
     }
